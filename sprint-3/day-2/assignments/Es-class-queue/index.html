@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CUSTOM QUEUE</h1>
+    
+</body>
+</html>
+<script>
+    class Queue {
+  constructor() {
+    this.items = [];
+    this.headIndex = 0;
+    this.tailIndex = 0;
+  }
+  // adding enque method
+  enqueue(item) {
+    this.items[this.tailIndex] = item;
+    this.tailIndex++;
+  }
+   // adding dequeue method
+  dequeue() {
+    const item = this.items[this.headIndex];
+    delete this.items[this.headIndex];
+    this.headIndex++;
+    return item;
+  }
+  // adding method to know the peek element
+  peek() {
+    return this.items[this.headIndex];
+  }
+  // adding method to know the length of queue
+  get length() {
+    return this.tailIndex - this.headIndex;
+  }
+}
+const queue = new Queue();
+queue.enqueue(7);
+queue.enqueue(2);
+queue.enqueue(6);
+console.log(queue)
+queue.enqueue(4);
+queue.dequeue(); 
+queue.peek();   
+    
+console.log(queue.length)
+</script>

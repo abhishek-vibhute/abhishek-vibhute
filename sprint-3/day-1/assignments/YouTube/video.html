@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon"
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png"
+        type="image/x-icon">
+</head>
+
+<body>
+
+    <div id="navbar">
+        <div id="line">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img id="YouTubelogo"
+            src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube2_colored_svg-256.png" alt="">
+        <div id="search-box">
+            <input type="search" name="" id="input-search" placeholder="Search">
+        </div>
+        <button id="search" onclick="getData()"><img
+                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-search-256.png" alt=""></button>
+
+        <div id="speak"><img src="https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/Mic_gray-256.png"
+                alt=""></div>
+
+        <div id="videLogo"><img
+                src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-256.png" alt="">
+        </div>
+
+        <div id="bell"><img
+                src="https://cdn2.iconfinder.com/data/icons/social-productivity-line-art-2/128/notification-256.png"
+                alt=""></div>
+
+        <div id="admin"><img
+                src="https://cdn1.iconfinder.com/data/icons/creatype-game-play-outline/64/1_user_player_admin_game-256.png"
+                alt=""></div>
+    </div>
+    <hr>
+    <div id="main">
+
+        <div id="HomeSrcollSection">
+            <div id="Home">
+                <img src="https://cdn1.iconfinder.com/data/icons/material-core/20/home-128.png" alt="">
+                <h3>Home</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn2.iconfinder.com/data/icons/social-media-2482/24/explore-256.png" alt="">
+                <h3>Explore</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/social-basic/32/Social_Media_Basic_Social_facebook__digital__Video_Reals_shorts_Short_video-128.png"
+                    alt="">
+                <h3>Shorts</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/complete-common-version-2-6/1024/subscriptions4-128.png"
+                    alt="">
+                <h3>Subscriptions</h3>
+            </div>
+            <hr>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_video_library_48px-256.png"
+                    alt="">
+                <h3>Library</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/multimedia-solid-30px/30/recent_history_replay_repeat-128.png"
+                    alt="">
+                <h3>History</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn1.iconfinder.com/data/icons/interface-59/24/time-watch-later-clock-256.png" alt="">
+                <h3>Watch later</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn2.iconfinder.com/data/icons/social-productivity-line-art-2/128/thumbs-up-2-128.png"
+                    alt="">
+                <h3>Liked Videos</h3>
+            </div>
+            <hr>
+            <h3 id="explore">Explore</h3>
+            <div id="Home">
+                <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/film-128.png" alt="">
+                <h3>Movies</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/user-interface-line-19/32/ui_20-128.png" alt="">
+                <h3>Gaming</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn3.iconfinder.com/data/icons/fluent-regular-24px-vol-4/24/ic_fluent_live_24_regular-128.png"
+                    alt="">
+                <h3>Live</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn1.iconfinder.com/data/icons/sale-14/64/hanger-Tools_and_utensils-closet-clothing-wardrobe-fashion-128.png"
+                    alt="">
+                <h3>Fashion & Beauty</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn2.iconfinder.com/data/icons/science-stroke-icons/104/26-science-bulb-idea-128.png"
+                    alt="">
+                <h3>Learning</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn0.iconfinder.com/data/icons/sport-set-healthy-lifestyle-linear-outline/300/24324646Untitled-3-128.png"
+                    alt="">
+                <h3>Sport</h3>
+            </div>
+            <hr>
+            <div id="Home">
+                <img src="https://cdn1.iconfinder.com/data/icons/photo-editor-3/24/i24_other_settings-128.png" alt="">
+                <h3>Settings</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/flag-1-128.png" alt="">
+                <h3>Report history</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn1.iconfinder.com/data/icons/ui-set-6/100/Question_Mark-128.png" alt="">
+                <h3>Help</h3>
+            </div>
+            <div id="Home">
+                <img src="https://cdn2.iconfinder.com/data/icons/billing-shipping/100/Feedback-128.png" alt="">
+                <h3>Send feedback</h3>
+            </div>
+        </div>
+
+        <div id="append">
+            <div id="type_section">
+                <select name="filter" id="filter">
+                    <option value="filter">Filter</option>
+                    <option value=""></option>
+                </select>
+              
+            </div>
+            
+            <hr>
+
+            <div id="ifram_video">
+            <iframe 
+                id="ifram"
+                width="100%" 
+                height="440px" 
+                <!-- src="https://www.youtube.com/embed/X27T-OnYoFk"   -->
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script src="./video.js"></script>
