@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        #head{
+            text-align: center;
+            color: teal;
+            text-decoration: underline;
+            
+        }
+
+        #add_Product{
+            width: 19%;
+            padding: 10px;
+            /* border: 1px solid red; */
+            cursor: pointer;
+            margin-left: 40%;
+        }
+
+        #add_Product:hover{
+            color: whitesmoke;
+            background-color: teal;
+            border: 0px;
+            transform: scale(1.05);
+        }
+        #total{
+            text-align: center;
+            color: rgb(35, 145, 139);
+        }
+
+        #main{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            /* border: 1px solid red; */
+            gap: 20px;
+            text-align: center;
+            line-height: 5px;
+            
+        }
+        #main>div{
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            /* border: 2px solid black; */
+        }
+
+        #main>div img{
+            /* border: 1px solid red; */
+            width: 100%;
+
+        }
+        #main h4{
+            margin-top: 10px;
+            line-height: 0px;
+            /* border: 1px solid; */
+        }
+
+        #main button{
+            cursor: pointer;
+            padding: 5px;
+        }
+        #main button:hover{
+            color: white;
+            background-color: darkslategray;
+            border: 0px;
+            transform: scale(1.50);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="head">Product Page</h1>
+
+    <button id="add_Product">ADD PRODUCT DATA</button>
+
+    <div id="total"></div>
+
+    <div id="main"></div>
+    
+</body>
+</html>
+
+<script>
+   
+
+let AddProduct= JSON.parse(localStorage.getItem("Products"));
+    
+document.querySelector("#add_Product").addEventListener("click",addProductPageLink);
+
+
+
+display(AddProduct)
+    function display(AddProduct){
+
+        AddProduct.forEach(function(el,index){
+
+
+            let div=document.createElement("div");
+            let name=document.createElement("h4");
+                name.innerText=el.name;
+
+            let category=document.createElement("h4");
+                category.innerText=el.category;
+            
+            let image=document.createElement("img");
+                image.src=el.image;
+
+            let price=document.createElement("h4");
+                price.innerText=el.price;
+
+            let gender=document.createElement("h4");
+                gender.innerText=el.gender
+            
+            let sold=document.createElement("h4");
+                sold.innerText=el.sold;
+               
+                
+
+            let btn=document.createElement("button");
+                btn.innerText="Remove";
+                btn.addEventListener("click",function(){
+                    remove(index);
+                })
+
+            
+
+            div.append(image,name,category,gender,sold,price,btn);
+            document.querySelector("#main").append(div);
+        })
+    }
+
+
+    function remove(index){
+        let data=AddProduct.filter(function(el,i){
+
+            if(i==index){
+                remove(el);
+                window.location.reload();
+            }else{
+                return i!==index;
+            }
+        })
+
+        localStorage.setItem("Products",JSON.stringify(data));
+    }
+
+
+    let total=document.createElement("h1");
+        total.innerText=`Total Products: ${AddProduct.length}`;
+        document.querySelector("#total").append(total);
+
+
+
+
+    function addProductPageLink(event){
+        event.preventDefault();
+        window.location.href="index.html"
+    }
+</script>

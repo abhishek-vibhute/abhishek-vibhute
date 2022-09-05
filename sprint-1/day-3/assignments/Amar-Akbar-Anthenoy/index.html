@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAR AKBAR ANTHONY</title>
+</head>
+<body>
+
+    <h1>Go to Inspact (Console)</h1>
+    
+</body>
+</html>
+
+<script>
+
+    let Amar={
+        name:"Amar",
+        lives:"Goa",
+        skills:"singer",
+        print:function(order,skills){
+           console.log(`Amar is a ${this.skills}, lives in Goa.`)
+        }
+    }
+
+    let Akbar={
+        name:"Akbar",
+        lives:"Mumbai",
+        skills:"chef",
+        print:function(order,skills){
+            console.log(`Akbar is a ${this.skills}, lives in Mumbai.`)
+        }
+    }
+
+    let Anthony={
+        name:"Anthony",
+        lives:"Kashmir",
+        skills:"Magician",
+        print:function(order,skills){
+            console.log(`Anthony is a ${this.skills}, lives in Kashmir.`)
+        }
+    }
+
+    
+    console.log("*****CALL BACK******")
+    console.log("***********")
+    Amar.print();
+    Amar.print.call(Akbar);
+    Amar.print.call(Anthony);
+    console.log("***********")
+    Akbar.print();
+    Akbar.print.call(Amar);
+    Akbar.print.call(Anthony);
+    console.log("***********")
+    Anthony.print()
+    Anthony.print.call(Amar);
+    Anthony.print.call(Akbar);
+   
+</script>
+
+
+
+
+<script>
+// let Amar = {
+//     name: 'Amar',
+//     skills:'singer',
+//     state:'Goa',
+
+//     print: function (order,skills) {
+//       console.log(`Amar is a  ${this.skills},lives in Goa`);
+      
+      
+//     },
+//   };
+
+//   let Akbar ={
+//     name:'Akbar',
+//     skills:'Chef',
+//     state:'Mumbai',
+
+//     print: function(order,skills){
+//         console.log(`Akbar is a  ${this.skills},lives in Mumbai`);
+//     },
+//   }
+    
+//   let Anthony={
+//     name:'Anthony',
+//     skills:'Magician',
+//     state: "Kashmir",
+
+//     print:function(order,skills){
+//         console.log(`Anthony is a  ${this.skills},lives in Kashmir`);
+//     },
+//   }
+
+
+//   Amar.print()
+//   Amar.print.call(Akbar)
+//   Amar.print.call(Anthony)
+
+// console.log("***************")
+
+
+// Akbar.print()
+// Akbar.print.call(Amar)
+// Akbar.print.call(Anthony)
+
+
+// console.log("***************")
+
+// Anthony.print();
+// Anthony.print.call(Amar);
+// Anthony.print.call(Akbar)
+
+
+  </script>

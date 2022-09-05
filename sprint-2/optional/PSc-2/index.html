@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 400px;
+            height: 400px;
+            margin-left: 400px;
+        }
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            margin: auto;
+            justify-content: space-evenly;
+          
+           
+            font-size: larger;
+           
+            width: 200px;
+            cursor: pointer;
+        }
+        .container {
+            border: 1px solid black;
+            height: 300px;
+            width: 300px;
+            
+        }
+        #results {
+            margin-top: 20px;
+            font-size: x-large;
+        }
+        body {
+            display: flex;
+            width: 85%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="query" oninput="debouncing(main,1000)">
+        <div id="results">Result:-</div>               
+    </div>
+   
+</body>
+</html>
+
+<script>
+let id;
+async function getData() {
+    let query = document.getElementById("query").value;
+    let url = `https://swapi.dev/api/people/?search=${query}`;
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log('data:',data);
+    return data.results;    
+}
+function appendData(data) {
+    let results = document.getElementById("results");
+    results.innerHTML = null;
+    data.forEach(function(element) {
+        let name = document.createElement("p");
+        name.innerText = element.name;
+        results.append(name);
+    });
+}
+async function main() {
+    let data = await getData();
+    appendData(data);
+}
+function debouncing(func,delay) {
+    if(id) {
+        clearTimeout(id);
+    }
+    id = setTimeout(function() {
+        func();
+    },delay);
+}
+</script>

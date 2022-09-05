@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies-II</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: teal;
+            text-decoration: underline;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-evenly;
+            padding: 40px;
+            gap: 50px;
+
+        }
+
+        #container>div {
+            line-height: 5px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 80%;
+            height: 300px;
+            padding: 20px;
+        }
+
+        #Sort {
+            display: flex;
+            /* border: 1px solid red; */
+            width: 50%;
+            gap: 20px;
+            margin: auto;
+        }
+
+        button {
+            border-radius: 15px;
+            padding: 15px;
+            border: 0px;
+            background-color: bisque;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(42, 99, 99);
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Movies -II</h1>
+    <div id="Sort">
+        <button id="sort-lh">Sort by low rating to high</button>
+        <button id="sort-hl"> Sort by High rating to low</button>
+    </div>
+    <div id="container"></div>
+
+
+</body>
+
+</html>
+
+
+<script>
+
+
+    let data= JSON.parse(localStorage.getItem("imagedataLS"))||[];
+
+    function MyFunCF(name, date, image, rating) {
+        this.name = `Name: ${name}`;
+        this.date = `Release: ${date}`;
+        this.image = image;
+        this.rating = `Rating:${rating}`;
+
+    }
+
+    let obj1 = new MyFunCF("THOR:Love and Thunder", "11 jul 2022", "https://media-cache.cinematerial.com/p/500x/w6vxvchp/thor-love-and-thunder-movie-poster.jpg?v=1653357775", "⭐️ 5.5")
+    let obj2 = new MyFunCF("TOPGUN", "19 jul 2022", "https://media-cache.cinematerial.com/p/500x/nza9lluu/top-gun-maverick-movie-poster.jpg?v=1648561333", "⭐️ 4.5")
+    let obj3 = new MyFunCF("MOON-NIGHT", "18 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/5658/1175658-v-c61b83f58fb8", "⭐️ 4.2 ")
+    let obj4 = new MyFunCF("LOKI", "16 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/1684/1011684-v-374e17c7e183", "⭐️ 5.1")
+    let obj5 = new MyFunCF("DR.STRANGE", "15 jul 2022", "https://m.media-amazon.com/images/M/MV5BNWM0ZGJlMzMtZmYwMi00NzI3LTgzMzMtNjMzNjliNDRmZmFlXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_FMjpg_UX1000_.jpg", "⭐️ 3.2")
+    let obj6 = new MyFunCF("NOPE", "14 jul 2022", "https://cdn.cinematerial.com/p/297x/ob2xlg7d/nope-movie-poster-md.jpg?v=1646155971", "⭐️ 4.3")
+    let obj7 = new MyFunCF("CLONE WARS", "13 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/2558/652558-v", "⭐️ 4.4")
+    let obj8 = new MyFunCF("Purple Hart", "1 jul 2022", "https://assets.gadgets360cdn.com/pricee/assets/product/202207/Purple_Hearts_Poster_1658087768.jpg", "⭐️ 4.0")
+    let obj9 = new MyFunCF("AVENGERS", "21 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/5171/875171-v", "⭐️ 5.9")
+
+    data.push(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8,obj9)
+
+    localStorage.setItem("imagedataLS",JSON.stringify(data));
+    // console.log(data);
+
+
+
+    function display(data){
+        console.log(data)
+
+    }
+</script>

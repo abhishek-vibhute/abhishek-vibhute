@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMMERCE I</title>
+    <style>
+        
+        #heading{
+            text-align: center;
+            color: teal;
+            text-decoration:underline;
+        }
+        #Product_Page{
+            width: 13%;
+            /* border: 1px solid red; */
+            margin-left:87vh;
+            padding: 5px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            
+        }
+        #Product_Page:hover{
+            color: white;
+            background-color: teal;
+            border: 0px;
+            border-radius: 10px;
+        }
+        #FormData{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            /* border: 5px solid red; */
+            width: 30%;
+            gap: 10px;
+            margin: auto;
+        }
+
+        #FormData{
+            /* border: 1px solid red; */
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #FormData #add{
+            padding: 7px;
+            width: 50%;
+            /* border: 1px solid red; */
+            margin: auto;
+            cursor: pointer;
+        }
+
+        #FormData #add:hover{
+            color: whitesmoke;
+            background-color: teal;
+            border-radius: 10px;
+            border: 0px;
+            transform: scale(1.0);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">E-COMMERCE : I</h1>
+
+    <button id="Product_Page"> Show Product</button>
+
+    <form id="FormData">
+        <input type="text" id="name" placeholder="Enter Your Product Name">
+        <input type="text" id="category" placeholder="Enter Your Category">
+        <input type="text" id="image" placeholder="enter your Image URL">
+        <input type="number" id="price" placeholder="enter a Price">
+        <select name="Gender " id="gender">
+            <option value="Gender">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <select name="Sold" id="sold">
+            <option value="Sold">Sold</option>
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+        <input type="submit" id="add" value="Add Data">
+    </form>
+</body>
+
+</html>
+
+<script>
+
+    document.querySelector("form").addEventListener("submit",MyFun);
+
+    document.querySelector("#Product_Page").addEventListener("click",PageLink);
+
+   let AddProduct= JSON.parse(localStorage.getItem("Products")) || [];
+
+    function MyFunCF(name,category,image,price,gender,sold){
+        this.name=`Name: ${name}`;
+        this.category=`Category: ${category}`
+        this.image=image;
+        this.price=`₹ ${price}`;
+        this.gender=`Gender: ${gender}`;
+        this.sold=`Sold: ${sold}`
+    }
+
+    function MyFun(event){
+        event.preventDefault()
+       
+
+        let name=document.querySelector("#name").value;
+        let category=document.querySelector("#category").value;
+        let image=document.querySelector("#image").value;
+        let price=document.querySelector("#price").value;
+
+        let gender=document.querySelector("#gender").value;
+        let sold=document.querySelector("#sold").value;
+      
+
+        let addData= new MyFunCF(name,category,image,price,gender,sold);
+
+       AddProduct.push(addData);
+        
+       localStorage.setItem("Products",JSON.stringify(AddProduct));
+
+    }
+
+    function PageLink(event){
+        event.preventDefault();
+
+        window.location.href="admin.html";
+    }
+
+
+</script>

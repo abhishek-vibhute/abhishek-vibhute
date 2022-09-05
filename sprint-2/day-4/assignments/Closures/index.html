@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #query {
+            width: 500px;
+            padding: 10px;
+        }
+
+        #movies {
+            border: 1px solid teal;
+            height: auto;
+            width: 520px;
+            overflow: scroll;
+        }
+
+        #MovieData {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            justify-content: space-evenly;
+            background-color: teal;
+
+        }
+
+        #MovieData img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body onload="">
+
+    <input type="text" onInput="debouns(MyFun, 1000)"  id="query" placeholder="">
+
+    <div id="movies"></div>
+
+</body>
+
+</html>
+
+<script>
+    let id;
+
+    // document.querySelector("#query").addEventListener("input", );
+
+    async function MyFun() {
+
+        try {
+
+            let query = document.querySelector("#query").value;
+
+            let res = await fetch(`https://www.omdbapi.com/?apikey=88ae7f05&s=${query}`);
+
+            let data = await res.json();
+            // console.log(data);
+
+
+            display(data.Search);
+
+
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    function display(RealData) {
+        console.log(RealData);
+        document.querySelector("#movies").innerHTML = null;
+
+        RealData.forEach(function (el, index) {
+            console.log(el);
+
+            let div = document.createElement("div");
+            div.setAttribute("id", "MovieData");
+
+            let img = document.createElement("img");
+            img.src = el.Poster;
+
+            let title = document.createElement("h3");
+            title.innerText = `Movie Name-${el.Title}`;
+
+            let year = document.createElement("p");
+            year.innerText = `Release Date-${el.Year}`;
+
+            div.append(img, title, year);
+            document.querySelector("#movies").append(div);
+        })
+
+    }
+
+    function debouns(MyFun, delay) {
+        if (id) {
+            console.log(id);
+            clearTimeout(id);
+        }
+        id = setTimeout(function () {
+            MyFun();
+            console.log(id);
+        }, delay);
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+document.querySelector("#query").addEventListener("input", MyFun);
+
+    async function MyFun() {
+        let query = document.querySelector("#query").value;
+        console.log(query);
+        try {
+            let res = await fetch(`http://www.omdbapi.com/?apikey=88ae7f05&s=${query}`);
+            let data = await res.json();
+            let actual_data = data.Search
+            if (actual_data != undefined) {
+                display(actual_data)
+            }
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    function display(data) {
+
+        data.forEach(function (el, index) {
+            // document.querySelector("#movies").innerHTML=null;
+
+            let div = document.querySelector("div");
+                div.setAttribute("id","MovieData")
+                
+
+            let img = document.createElement("img");
+            img.src = el.Poster;
+
+            let title=document.createElement("h1");
+                title.innerText=el.Title
+
+            div.append(img,title);
+            document.querySelector("#movies").append(div);
+        })
+
+
+    } -->

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>WELCOME TO STUDENT MANAGEMENT DATA</h1>
+
+    <div id="container"></div>
+</body>
+
+</html>
+
+
+<script>
+
+    let studentData = JSON.parse(localStorage.getItem("StudentDataLS")) || [];
+
+    display(studentData);
+    function display(studentData){
+        
+
+        studentData.forEach(function(el,index){
+            
+            let div=document.createElement("div");
+
+            let name=document.createElement("h4");
+                name.innerText=el.name;
+
+            let course=document.createElement("h4");
+                course.innerText=el.course;
+
+            let unit=document.createElement("h4");
+                unit.innerText=el.unit;
+
+            let batch=document.createElement("h4");
+                batch.innerText=el.batch;
+            
+            let image=document.createElement("img");
+                image.src=el.image;
+
+
+
+            div.append(image,name,course,unit,batch);
+            
+            document.querySelector("#container").append(div);
+        })
+    }
+
+</script>

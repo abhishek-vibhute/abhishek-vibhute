@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB MOVIE APP -I</title>
+    <style>
+        * {
+            background-color: black;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(184, 221, 221);
+
+        }
+
+        h1:hover {
+            text-decoration: underline;
+
+        }
+
+        #input {
+            width: 30%;
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+
+        input {
+            width: 70%;
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+
+        }
+
+        input:hover {
+            background-color: rgb(255, 255, 255);
+            color: black;
+            transform: scale(1.0);
+        }
+
+        button:hover {
+            background-color: rgb(255, 255, 255);
+            color: black;
+            transform: scale(0.9);
+
+
+
+        }
+
+        button {
+            padding: 10px;
+            width: 21%;
+           
+            color: white;
+            border: 0.5px solid;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #main {
+            /* border: 2px solid teal; */
+            margin-top: 30px;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px 30px;
+            text-align: center;
+            line-height: 15px;
+            color: whitesmoke;
+            font-size: 16px;
+        }
+
+        #MovieDiv {
+            box-shadow: rgb(255, 253, 253) 0px 7px 19px;
+
+
+        }
+
+
+
+        #MovieDiv img {
+            width: 100%;
+            height: 320px;
+        }
+
+        #MovieDiv:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>OMDB MOVIE APP -I</h1>
+    <div id="input">
+        <input type="text" id="Movie" placeholder="search movie">
+        <button id="search">search</button>
+    </div>
+
+    <div id="main">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let data;
+
+    document.querySelector("#search").addEventListener("click", MyFun);
+
+    async function MyFun() {
+
+        try {
+
+            let movie = document.querySelector("#Movie").value;
+
+            let res = await fetch(`https://www.omdbapi.com/?apikey=88ae7f05&s=${movie}`)
+
+            data = await res.json();
+
+
+            display(data.Search);
+
+
+
+
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+
+
+
+
+    function display(data) {
+
+
+
+        document.querySelector("#main").innerHTML = null
+        data.forEach(function (el, index) {
+
+
+
+            let div = document.createElement("div");
+            div.setAttribute("id", "MovieDiv");
+
+            let img = document.createElement("img");
+            img.src = el.Poster;
+
+            let title = document.createElement('h3');
+            title.innerText = `Name- ${el.Title}`;
+           
+
+
+            let date = document.createElement("h3");
+            date.innerText = `Year- ${el.Year}`
+
+            let rate = document.createElement("h3");
+            rate.innerText = `Rating- ${el.imdbID}`
+
+
+
+
+            div.append(img, title, date, rate);
+            document.querySelector("#main").append(div);
+        })
+
+    }
+
+
+
+
+
+
+</script>
+
+<!-- http://www.omdbapi.com/?apikey=88ae7f05&s=thor -->
+
+<!-- Search: Array(2)
+0:
+Poster: "N/A"
+Title: "Ek Ladki Bheegi Bhagi Si"
+Type: "movie"
+Year: "2003"
+imdbID: "tt8093108" -->

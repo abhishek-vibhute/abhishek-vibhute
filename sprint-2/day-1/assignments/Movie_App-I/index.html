@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies-1</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: teal;
+            text-decoration: underline;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-evenly;
+            padding: 40px;
+            gap: 50px;
+
+        }
+
+        #container>div {
+            line-height: 5px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 80%;
+            height: 300px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Movies -I</h1>
+    <div id="container"></div>
+
+
+</body>
+
+</html>
+
+
+<script>
+
+
+let container=document.querySelector("#container")
+    let data = JSON.parse(localStorage.getItem("movies")) || [];
+
+    function objectCreater(name, date, image, rating) {
+        this.name = `Name: ${name}`;
+        this.date = `Release: ${date}`;
+        this.image = image;
+        this.rating = `Rating:${rating}`;
+
+    }
+
+    let obj1 = new objectCreater("THOR:Love and Thunder", "11 jul 2022", "https://media-cache.cinematerial.com/p/500x/w6vxvchp/thor-love-and-thunder-movie-poster.jpg?v=1653357775", "⭐️ 5")
+    let obj2 = new objectCreater("TOPGUN", "1 jul 2022", "https://media-cache.cinematerial.com/p/500x/nza9lluu/top-gun-maverick-movie-poster.jpg?v=1648561333", "⭐️ 4.5")
+    let obj3 = new objectCreater("MOON-NIGHT", "1 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/5658/1175658-v-c61b83f58fb8", "⭐️ 4.5 ")
+    let obj4 = new objectCreater("LOKI", "1 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/1684/1011684-v-374e17c7e183", "⭐️ 5")
+    let obj5 = new objectCreater("DR.STRANGE", "1 jul 2022", "https://m.media-amazon.com/images/M/MV5BNWM0ZGJlMzMtZmYwMi00NzI3LTgzMzMtNjMzNjliNDRmZmFlXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_FMjpg_UX1000_.jpg", "⭐️ 3")
+    let obj6 = new objectCreater("NOPE", "1 jul 2022", "https://cdn.cinematerial.com/p/297x/ob2xlg7d/nope-movie-poster-md.jpg?v=1646155971", "⭐️ 4.3")
+    let obj7 = new objectCreater("CLONE WARS", "1 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/2558/652558-v", "⭐️ 4.4")
+    let obj8 = new objectCreater("Purple Hart", "13 jul 2022", "https://assets.gadgets360cdn.com/pricee/assets/product/202207/Purple_Hearts_Poster_1658087768.jpg", "⭐️ 4.0")
+    let obj9 = new objectCreater("AVENGERS", "1 jul 2022", "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/5171/875171-v", "⭐️ 5.")
+
+    data.push(obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9);
+
+
+    localStorage.setItem("Movies", JSON.stringify(data))
+</script>
+
+
+<script>
+
+    display(data);
+
+    function display(data) {
+
+        container.innerHTML=null
+        data.forEach(function (el) {
+
+            let div = document.createElement("div");
+
+            let name = document.createElement("h5");
+            name.innerText = el.name;
+
+            let date = document.createElement("h5");
+            date.innerText = el.date;
+
+            let image = document.createElement("img");
+            image.src = el.image;
+
+            let rating = document.createElement("h5");
+            rating.innerText = el.rating;
+
+
+            div.append(image, name, date, rating)
+            container.append(div);
+        });
+    }
+</script>

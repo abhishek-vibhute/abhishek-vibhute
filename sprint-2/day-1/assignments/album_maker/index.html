@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #slideImage {
+            width: 100%;
+            height: auto;
+        }
+
+        #container {
+            margin-top: 50px;
+            margin-left: 100px;
+            border: 1px solid red;
+            width: 80%;
+            height: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="url" placeholder="Enter Your IMG URL">
+    <button id="search">Search</button>
+
+
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+
+
+    <div id="container"></div>
+
+</body>
+
+</html>
+
+<script>
+    let id;
+    let count = 0;
+    document.querySelector("#pause").addEventListener("click", pause);
+    document.querySelector("#search").addEventListener("click", MyFun);
+    // document.querySelector("#start").addEventListener("click", startWindow);
+    let imageData = JSON.parse(localStorage.getItem("Image")) || [];
+
+    start(imageData)
+
+    function MyFun(event) {
+        event.preventDefault();
+        let image = document.querySelector("#url").value;
+
+        imageData.push(image);
+        localStorage.setItem("Image", JSON.stringify(imageData));
+
+    }
+
+    function start(imageData) {
+
+        let img = document.createElement("img");
+        img.setAttribute("id", "slideImage")
+
+
+        id = setInterval(function () {
+
+
+            if (count == imageData.length) {
+                count = 0;
+            }
+
+            img.src = imageData[count];
+
+            count++
+            console.log(count);
+            document.querySelector("#container").append(img);
+        }, 1000)
+    }
+
+   
+
+    function pause() {
+        console.log("Hello")
+        clearTimeout(id);
+
+    }
+
+
+</script>

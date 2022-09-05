@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>STUDENT MANAGEMENT SYSTEM</h1>
+
+    <div id="dashboard">*******Dashboard*******</div>
+    
+    <form id="Add_Student">
+
+        <input type="text" id="name" placeholder="enter your name">
+        <input type="text" id="course" placeholder="enter your course name">
+        <input type="number" id="unit" placeholder="enter your unit number">
+        <input type="text" id="image" placeholder="enter your Image URL">
+        <input type="number" id="batch" placeholder="enter your batch">
+        <input type="submit" value="submit">
+
+    </form>
+
+
+
+
+</body>
+
+</html>
+
+
+<script>
+    document.querySelector("#Add_Student").addEventListener("submit",MyFun);
+
+    document.querySelector("#dashboard").addEventListener("click",DashboardLink)
+
+
+    let StudentData= JSON.parse(localStorage.getItem("StudentDataLS"));
+
+    function MyFunCF(name,course,unit,image,batch){
+        this.name=name;
+        this.course=course;
+        this.unit=unit;
+        this.image=image;
+        this.batch=batch;
+    }
+
+    function MyFun(event){
+        event.preventDefault();
+        let name=document.querySelector("#name").value;
+        let course=document.querySelector("#course").value;
+        let unit=document.querySelector("#unit").value;
+        let image=document.querySelector("#image").value;
+        let batch=document.querySelector("#batch").value;
+
+        let addStudent= new MyFunCF(name,course,unit,image,batch);
+           
+        StudentData.push(addStudent);
+           
+        localStorage.setItem("StudentDataLS",JSON.stringify(StudentData));
+        
+    }
+
+    
+    function DashboardLink(event){
+        event.preventDefault();
+        window.location.href="dashboard.html"
+    }
+    
+
+</script>

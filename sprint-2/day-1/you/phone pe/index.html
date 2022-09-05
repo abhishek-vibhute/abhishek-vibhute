@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Pay</title>
+    <style>
+        * {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #container {
+            background-color: white;
+            text-align: center;
+            width: 30vw;
+            border: 1px solid red;
+            margin: auto;
+            height: 82vh;
+        }
+
+        #container>#empty {
+            height: 10vh;
+            background-color: greenyellow;
+            margin-bottom: 20%;
+        }
+
+        input {
+            margin-top: 5vh;
+        }
+
+        #logo {
+            width: 20vw;
+        }
+
+        #status {
+            width: 15vw;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://i.im.ge/2022/07/02/uIQF26.png" id="logo" alt=""><br>
+    <div id="container">
+        <div id="empty"></div>
+        <!-- <label for="">Enter your 4 digit Pin to confirm</label><br>
+        <input type="number" id="pin" placeholder="PIN">
+        <button id="submit">Confirm</button> -->
+        <h2 id="h2"></h2>
+        <img src="" alt="" id="status">
+    </div>
+</body>
+
+</html>
+
+<script>
+    let getTruth = () => {
+        return true;
+    }
+
+    let myPayment = new Promise(function (resolve, reject) {
+        if (getTruth()) {
+            resolve("success")
+        } else {
+            reject("failed")
+
+        }
+    })
+
+    let container = document.getElementById("container")
+    let load = document.getElementById("status")
+    let h2 = document.getElementById("h2")
+    myPayment.then(function (resolve) {
+        setTimeout(function () {
+            console.log(resolve)
+            h2.innerHTML = "Your payment is processing";
+            h2.style.color = "orange"
+            load.src = "https://icon-library.com/images/ajax-loading-icon/ajax-loading-icon-18.jpg"
+            container.append(load)
+        }, 1000)
+        setTimeout(function () {
+            h2.innerText = "Your Payment has been done Succesfully"
+            h2.style.color = "green"
+            load.src = "https://i.im.ge/2022/07/02/uIQvM8.gif"
+            container.append(load)
+        }, 3000)
+    })
+    myPayment.catch(function (reject) {
+        setTimeout(function () {
+            console.log(reject)
+            h2.innerHTML = "Your payment is processing";
+            h2.style.color = "orange"
+            load.src = "https://icon-library.com/images/ajax-loading-icon/ajax-loading-icon-18.jpg"
+            container.append(load)
+        }, 1000)
+        setTimeout(() => {
+            h2.innerHTML = "Your payment has been failed";
+            h2.style.color = "red"
+            load.src = "https://i0.wp.com/balututorials.com/wp-content/uploads/2020/07/Error.gif"
+            container.append(load)
+        }, 3000)
+    })
+</script>
