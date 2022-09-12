@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 & Pagination - 2</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+    // class
+
+    // create a class stack
+
+    class stack {
+        #s;
+        constructor() {
+            this.#s = [];
+            this.length = 0;
+        }
+
+        get value() {
+            return this.#s;
+        }
+
+        push(value) {
+            this.#s.push(value);
+            // this[this.length] = value;
+            this.length++;
+        }
+
+        pop() {
+            this.#s.pop();
+            // delete this[this.length - 1]
+            this.length--;
+        }
+    }
+
+    let s1 = new stack();
+    s1.push(1);
+    s1.push(2);
+    console.log(s1);
+
+    s1.pop();
+    console.log(s1);
+
+</script>
